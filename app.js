@@ -66,13 +66,15 @@ server.on('uncaughtException', function(req, res, route, err) {
   return false;
 });
 
-// last server config
-server.on('after', restifyBunyanLogger({
-  // Let's not show the calls on /status
-  skip: function(req) {
-    return req.url === "/status" || req.method === "OPTIONS";
-  }
-}));
+// // last server config
+// server.on('after', restifyBunyanLogger({
+//   // Let's not show the calls on /status
+//   skip: function(req) {
+//     return req.url === "/status" || req.method === "OPTIONS";
+//   }
+// }));
+server.on('after', function(request, response, route, error) {
+});
 
 // And we are done :)
 // Expose the server
