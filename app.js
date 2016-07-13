@@ -21,6 +21,12 @@ app.use(morgan('dev'));
 require('./config/routes.js')(app, handlers);
 require('./lib/socket-handler.js')(config, io);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 console.log('Server listening on port ' + config.port);
 
 module.exports = app;
