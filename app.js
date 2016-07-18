@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 // Connect to mongoose
 mongoose.connect(config.mongoUrl);
 var allowHeaders = ['Accept', 'Accept-Version', 'Authorization', 'Content-Type', 'X-Requested-With', 'Session-Id'];
-var cors = require('lib/middlewares/cors.js');
+var cors = require('./lib/middlewares/cors.js');
 app.listen(config.port);
 var io = require('socket.io').listen(app);
 
