@@ -12,6 +12,7 @@ var mongoose = require('mongoose');
 mongoose.connect(config.mongoUrl);
 var allowHeaders = ['Accept', 'Accept-Version', 'Authorization', 'Content-Type', 'X-Requested-With', 'Session-Id'];
 var cors = require('./lib/middlewares/cors.js');
+app.use(cors);
 app.listen(config.port);
 var io = require('socket.io').listen(app);
 
@@ -21,8 +22,6 @@ app.use(morgan('dev'));
 // routes ======================================================================
 require('./config/routes.js')(app, handlers);
 require('./lib/socket-handler.js')(config, io);
-
-app.use(cors);
 
 console.log('Server listening on port ' + config.port);
 
